@@ -1,0 +1,241 @@
+$controlsColor: rgb(150, 0, 200);
+$accent: rgb(150, 50, 200);
+$current: rgb(150, 100, 200);
+$selectedFirst: rgb(150, 150, 200);
+$selectedSecond: rgb(150, 200, 200);
+$intermediate: rgb(150, 250, 200);
+
+body {
+  font-family: sans-serif;
+  color: #1b1b1b;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 200px;
+}
+
+.calendar {
+  position: relative;
+  width: 500px;
+  padding: 1rem;
+  border: 1px solid #dedede;
+  border-radius: 5px;
+  background: #fff;
+
+  &__full-date {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    padding: 12px 32px;
+    border-radius: 16px;
+    background-color: #e8e2f1;
+    cursor: default;
+  }
+
+  &__controls {
+    display: grid;
+    grid-template-columns: 1fr 0.6fr 1fr;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 6px;
+  }
+
+  &__btn {
+    padding: 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    background: transparent;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all .2s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $controlsColor;
+      border-color: $controlsColor;
+      color: #fff;
+
+      &::after, &::before {
+        color: #e8e2f1;
+      }
+    }
+  }
+
+  &__current-date-btn {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: 120%;
+    padding: 13px 20px 12px;
+    border: 1px solid #e8e2f1;
+    cursor: pointer;
+    transition: background-color .2s;
+
+    &:hover {
+      background-color: #d9d9d9;
+    }
+
+    &[data-year] {
+      border-color: $selectedFirst;
+    }
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  &__top-description {
+    text-align: center;
+    font-size: 17px;
+    padding: 6px;
+  }
+
+  &__display {
+    display: grid;
+    transition: all .2s;
+
+    &[data-display="days"] {
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+
+    &[data-display="months"] {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+  }
+
+  &__cell {
+    text-align: center;
+    padding: 12px;
+    border-radius: 3px;
+    border: 1px solid #d9d9d9;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all .2s;
+
+    &:hover {
+      background-color: $accent;
+      color: #fff;
+    }
+
+    &[data-month] {
+      padding: 24px 12px;
+      font-weight: 400;
+      border-radius: 8px;
+      &:hover {
+        background-color: $selectedFirst;
+      }
+    }
+
+    &--now {
+      background-color: $current;
+      color: #fff;
+    }
+
+    &[data-selected="first"] {
+      background-color: $selectedFirst !important;
+      color: #fff;
+    }
+
+    &[data-selected="second"] {
+      background-color: $selectedSecond !important;
+      color: #fff;
+    }
+
+    &[data-selected="intermediate"] {
+      background-color: $intermediate !important;
+      color: #fff;
+    }
+
+    &--additional {
+      background-color: #d9d9d9;
+      color: #fff;
+    }
+  }
+
+  &__foot {
+    display: grid;
+    grid-template-columns: 3fr 2fr 2.5fr;
+    align-items: center;
+    gap: 12px;
+    padding-top: 20px;
+  }
+
+  &__foot-btn {
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all .2s;
+    cursor: pointer;
+  }
+
+  &__accept-btn {
+    background-color: $selectedFirst;
+    border: 1px solid $selectedFirst;
+    color: #fff;
+
+    &:hover {
+      background-color: #fff;
+      color: $selectedFirst;
+    }
+  }
+
+  &__choose-btn {
+    border: 1px solid #1b1b1b;
+
+    &:hover {
+      background: #1b1b1b;
+      border-color: #1b1b1b;
+      color: #fff;
+    }
+
+    &.active {
+      background: #1b1b1b;
+      border-color: #1b1b1b;
+      color: #fff;
+    }
+  }
+
+  &__date-intervals {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__interval {
+    font-size: 12px;
+    margin: 0;
+    padding: 10px;
+    background-color: #e8e2f1;
+    border: 1px solid $selectedFirst;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all .2s;
+
+    &:empty {
+      opacity: 0;
+    }
+  }
+}
+
+#calendar-next-btn::after {
+  font-weight: 200;
+  font-size: 14px;
+  content: " >>";
+}
+
+#calendar-prev-btn::before {
+  font-weight: 200;
+  font-size: 14px;
+  content: "<< ";
+}

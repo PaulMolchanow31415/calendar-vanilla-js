@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Встраеваемый календарь</title>
+</head>
+<body>
+<div class="container">
+  <!-- календарь -->
+  <div class="calendar">
+    <span class="calendar__full-date"></span>
+    <div class="calendar__controls">
+      <button class="calendar__btn" id="calendar-prev-btn" type="button">Предыдущий</button>
+      <!-- отображение текущей даты и возможность выбора месяца -->
+      <button class="calendar__current-date-btn" type="button"></button>
+      <button class="calendar__btn" id="calendar-next-btn" type="button">Следующий</button>
+    </div>
+    <!-- вывод названий -->
+    <div class="calendar__top"></div>
+    <!-- отображение дат -->
+    <div class="calendar__display"></div>
+    <div class="calendar__foot">
+      <!-- вывод интервалов -->
+      <div class="calendar__date-intervals">
+        <p class="calendar__interval" id="calendar__min-interval"></p>
+        <p class="calendar__interval" id="calendar__max-interval"></p>
+      </div>
+      <button class="calendar__foot-btn calendar__choose-btn" type="button">Выбрать дату</button>
+      <button class="calendar__foot-btn calendar__accept-btn" type="button">Отправить данные</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
