@@ -238,6 +238,8 @@ class Calendar {
         }
         if (this.#firstSelectedDate && this.#secondSelectedDate) {
             this.#calendarCells.updateDays(this.days);
+            this.#firstSelectedDate = null;
+            this.#secondSelectedDate = null;
             this.#flushDisplays();
         }
     }
